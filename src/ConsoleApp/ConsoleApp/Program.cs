@@ -48,5 +48,13 @@ myList.Add("Item 5");
 myList.Add("Item 6"); // This will not be added because the limit is 5.
 
 Console.WriteLine("List content: " + myList.GetContent());
-
 // myList = 6; // This is not valid in C# as myList is of type MyList<string> and cannot be assigned an integer.
+
+int[] numbers = { 1, 2, 3 }; // old syntax for array initialization
+int[] moreNumbers = [4, 5, 6]; // new and recommended syntax for array initialization after C# 12
+
+Console.WriteLine(numbers); // This will print the type name of the array, not its content.
+Console.WriteLine(moreNumbers); // array name System.Int32[]
+
+// To print the content of an array, you can use string.Join or a loop.
+Console.WriteLine("Numbers: " + string.Join(", ", numbers)); // Prints: Numbers: 1, 2, 3
