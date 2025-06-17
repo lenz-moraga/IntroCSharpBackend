@@ -17,7 +17,15 @@ namespace ConsoleApp.Models
         }
         public static People FromJson(string json)
         {
-            return JsonSerializer.Deserialize<People>(json);
+
+            var deserialized = JsonSerializer.Deserialize<People>(json);
+
+            if (deserialized == null) // Ensure the deserialization result is not null.
+            {
+                throw new InvalidOperationException("Deserialization resulted in a null object.");
+            }
+
+            return deserialized;
         }
     }
 }

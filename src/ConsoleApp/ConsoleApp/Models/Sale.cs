@@ -49,6 +49,7 @@ namespace ConsoleApp.Models
         // This is a method that returns a string with information about the sale.
         public string GetInfo()
         {
+            _localTotal = Total;
             return "_localTotalocalTotal: " + _localTotal + ", _otherTotal: " + _otherTotal + ", Total: " + Total;
         }
 
