@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// In C#, you can use the `using` directive to import namespaces,
+// which allows you to use classes and methods from those namespaces without fully qualifying their names.
 using ConsoleApp.Models;
 
 Console.WriteLine("Hello, World!");
@@ -101,3 +102,28 @@ foreach (var name in nameResult2)
 {
     Console.WriteLine(name); // Prints the names in alphabetical order
 }
+
+var myVar = "Hello, World!"; // var infers the type of myVar to be string based on the assigned value.
+Console.WriteLine(myVar);
+// since the type of myVar is inferred to be string, you can use string methods on it.
+// myVar = 24; // This will cause a compile-time error because myVar is inferred to be a string, not an int.
+// to be able to change the type of myVar, you would need to declare it as dynamic or use a different variable name.
+
+dynamic helloWorld = "Hello, World!"; // dynamic allows the type to be determined at runtime.
+helloWorld = 24.7; // This is valid because dynamic allows changing the type at runtime.
+Console.WriteLine(helloWorld); // Prints: 24.7
+
+// Concatenation in C# can be done using the + operator or string interpolation.
+Console.WriteLine("Hello, " + "World!"); // Using + operator
+Console.WriteLine($"{myVar} {helloWorld}"); // Using string interpolation
+
+myVar = "New Value"; // Reassigning myVar to a new string value.
+                     // here myVar can be reassigned to a new string value because it is declared as a string type.
+                     // as a string, you can use string methods on it.
+
+// in C#, you can have constants using the const keyword. 
+const string myConstant = "This is a constant value"; // This is a constant string value that cannot be changed.
+                                                      // constans are immutable and must be initialized at the time of declaration.
+                                                      // constants need to have its type explicitly declared.
+
+Console.WriteLine(myConstant); // Prints: This is a constant value
