@@ -81,6 +81,8 @@ var nameResult = from n in names
 // but it is dangerous to use .ToList() if the original list is modified later,
 // as it will not reflect the changes made to the original list.
 // and could cause performance issues if the list is large.
+// .ToArray() can also be used to convert the result to an array.
+// .ToDictionary() is used to convert the result to a dictionary.
 
 var nameResult2 = names
     .Where(n => n.Length > 3 && n.Length < 5)
