@@ -58,3 +58,44 @@ Console.WriteLine(moreNumbers); // array name System.Int32[]
 
 // To print the content of an array, you can use string.Join or a loop.
 Console.WriteLine("Numbers: " + string.Join(", ", numbers)); // Prints: Numbers: 1, 2, 3
+
+// Linq
+
+// origin
+var names = new List<string>()
+{
+    "Luis",
+    "Bob",
+    "Alice",
+    "Charlie"
+};
+
+// query
+var nameResult = from n in names
+                 where n.Length > 3 && n.Length < 5
+                 orderby n descending
+                 select n;
+// you can use .ToList() to convert the result to a list, but it's not necessary
+// here since we're just printing the names.
+// converting to a list is useful if you want to store the result for later use.
+// but it is dangerous to use .ToList() if the original list is modified later,
+// as it will not reflect the changes made to the original list.
+// and could cause performance issues if the list is large.
+
+var nameResult2 = names
+    .Where(n => n.Length > 3 && n.Length < 5)
+    .OrderByDescending(n => n)
+    .Select(d => d);
+
+// execution
+Console.WriteLine("Names with length > 3 and < 5, ordered by descending: ");
+foreach (var name in nameResult)
+{
+    Console.WriteLine(name); // Prints the names in alphabetical order
+}
+
+Console.WriteLine("Names with length > 3 and < 5, ordered by descending (using method syntax): ");
+foreach (var name in nameResult2)
+{
+    Console.WriteLine(name); // Prints the names in alphabetical order
+}
