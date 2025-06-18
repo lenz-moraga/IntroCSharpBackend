@@ -362,6 +362,7 @@ addNumbers(5, 10); // Outputs: 15
 ```
 
 **Use Cases:**
+
 - Event handling: `Action` is often used for defining callbacks or event handlers.
 - Functional programming: It simplifies passing methods as arguments to other methods.
 
@@ -389,8 +390,43 @@ int sum = add(3, 4); // Returns 7
 ```
 
 **Use Cases:**
+
 - Returning values from callbacks or lambda expressions.
 - LINQ queries and projections.
 - Passing logic as parameters when a result is needed.
 
 ---
+
+### Casting
+
+```csharp
+// Example of casting in C#:
+
+double myDouble = 9.78;
+int myInt = (int)myDouble; // Explicit casting: double to int
+
+Console.WriteLine("Double value: " + myDouble); // Prints: Double value: 9.78
+Console.WriteLine("Int value after casting: " + myInt); // Prints: Int value after casting: 9
+
+// You can also use 'as' and 'is' for reference types:
+object obj = "This is a string";
+string str1 = obj as string; // 'as' returns null if the cast fails
+if (obj is string str2)
+{
+    Console.WriteLine("obj is a string: " + str2);
+}
+```
+---
+
+```csharp
+string numberString = "123";
+
+// Using int.Parse (throws exception if invalid)
+int number1 = int.Parse(numberString);
+
+// Using int.TryParse (safe, returns false if invalid)
+bool success = int.TryParse(numberString, out int number2);
+
+Console.WriteLine(number1); // 123
+Console.WriteLine(success ? number2.ToString() : "Invalid number");
+```
