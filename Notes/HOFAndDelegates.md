@@ -145,22 +145,28 @@ Think of these concepts as:
 **Example**
 
 ```csharp
-// 1. Define a delegate type
-public delegate void Notify(string message);
+using System;
 
-// 2. Define a class with an event based on the delegate
+// 1. Define a custom EventArgs type (optional, for passing event data)
+public class ProcessEventArgs : EventArgs
+{
+    public string Message { get; }
+    public ProcessEventArgs(string message) => Message = message;
+}
+
+// 2. Define a class with an event based on EventHandler<TEventArgs>
 public class Process
 {
-    // Declare the event
-    public event Notify ProcessCompleted;
+    // Declare the event using EventHandler<TEventArgs>
+    public event EventHandler<ProcessEventArgs> OnProcessCompleted;
 
     public void Start()
     {
         Console.WriteLine("Process started...");
         // Simulate some work
         System.Threading.Thread.Sleep(500);
-        // Raise the event
-        ProcessCompleted?.Invoke("Process finished!");
+        // Raise the event with event data
+        OnProcessCompleted?.Invoke(this, new ProcessEventArgs("Process finished!"));
     }
 }
 
@@ -172,16 +178,16 @@ class Program
         var process = new Process();
 
         // 4. Subscribe to the event with a method
-        process.ProcessCompleted += ShowMessage;
+        process.OnProcessCompleted += ShowMessage;
 
         // 5. Start the process
         process.Start();
     }
 
-    // Method that matches the delegate signature
-    static void ShowMessage(string msg)
+    // Method that matches the EventHandler<ProcessEventArgs> signature
+    static void ShowMessage(object sender, ProcessEventArgs e)
     {
-        Console.WriteLine("EVENT: " + msg);
+        Console.WriteLine("EVENT: " + e.Message);
     }
 }
 ```
@@ -205,3 +211,9 @@ class Program
 - Logging services that subscribe to error events.
 - Background jobs that notify when they finish.
 - Custom middleware or pipeline steps using delegates.
+
+### Good practices
+
+- Use `Action<>` and `Func<>` instead of declaring custom delegates when possible.
+- For declaring events, follow the `OnNameHandler`.
+- Use `?.Invoke` to avoud exceptions if there is no subscriptions.
