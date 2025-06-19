@@ -8,7 +8,11 @@ Represents a sequence of characters. Used for text data.
 string name = "John Doe";
 ```
 
-**Use Cases:** Storing names, messages, or any textual data.
+**Use Cases:** 
+- Storing names, messages, or any textual data.
+- StringBuilder for bucle contatenations.
+- string.Replace() for simple replacing.
+- string.Split(), string.Substring() heavy/advanced manipulation.
 
 ---
 
