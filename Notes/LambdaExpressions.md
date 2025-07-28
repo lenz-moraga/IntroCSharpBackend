@@ -3,6 +3,7 @@
 **Lambda expressions** are a concise way to write anonymous methods (functions without a name) in C#. They use the `=>` syntax.
 
 ### Syntax Example:
+
 ```csharp
 // Lambda that adds two numbers
 Func<int, int, int> add = (a, b) => a + b;
@@ -24,6 +25,7 @@ int result = add(2, 3); // result is 5
 Yes. In JavaScript, **arrow functions** (`=>`) are similar to C# lambdas.
 
 ### JavaScript Example:
+
 ```js
 const add = (a, b) => a + b;
 let result = add(2, 3); // result is 5
@@ -45,27 +47,30 @@ let result = add(2, 3); // result is 5
 #### Example for Dummies
 
 **JavaScript:**
+
 ```js
 function Counter() {
-    this.count = 0;
-    setInterval(function() {
-        this.count++; // 'this' is NOT the Counter! It's the global object or undefined.
-        console.log(this.count); // Not what you expect!
-    }, 1000);
+  this.count = 0;
+  setInterval(function () {
+    this.count++; // 'this' is NOT the Counter! It's the global object or undefined.
+    console.log(this.count); // Not what you expect!
+  }, 1000);
 }
 
 function CounterArrow() {
-    this.count = 0;
-    setInterval(() => {
-        this.count++; // 'this' IS the CounterArrow object!
-        console.log(this.count); // Works as expected
-    }, 1000);
+  this.count = 0;
+  setInterval(() => {
+    this.count++; // 'this' IS the CounterArrow object!
+    console.log(this.count); // Works as expected
+  }, 1000);
 }
 ```
+
 - In the first example, `this` inside the regular function does not refer to the `Counter` object.
 - In the second example, the arrow function keeps the `this` from `CounterArrow`, so it works.
 
 **C#:**
+
 ```csharp
 class Counter
 {
@@ -80,11 +85,19 @@ class Counter
     }
 }
 ```
+
 - In C#, you don't have to worry—`this` inside the lambda always refers to the `Counter` object.
 
-- **Usage Context:** C# lambdas are often used with delegates and LINQ; JS arrow functions are used for callbacks, array methods, etc.
-
 ---
+
+**Differences between this in `Js` and `C#`**
+
+| Feature           | JavaScript (`this`)                                     | C# (`this`)                                                  |
+| ----------------- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| What is it?       | Reference to the object that is executing the function  | Reference to the current instance of the class               |
+| How does it work? | Depends on how the function is called (dynamic binding) | Always refers to the current class instance (static binding) |
+| Can it change?    | Yes, can change with `bind`, `call`, or `apply`         | No, it does not change                                       |
+| Common context    | Objects, functions, event handlers, classes (ES6)       | Classes and methods                                          |
 
 ---
 
@@ -93,4 +106,4 @@ class Counter
 - Filtering or transforming collections (LINQ in C#; `map`, `filter` in JS)
 - Passing logic as parameters (event handlers, callbacks)
 - Short, inline functions without needing a named method
-
+- C# lambdas are often used with delegates and LINQ; JS arrow functions are used for callbacks, array methods, etc.
