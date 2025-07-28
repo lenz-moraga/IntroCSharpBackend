@@ -12,8 +12,7 @@ namespace ConsoleApp.Models
         // set; is used to assign a value to the property.
 
         // Accessors are used to control the visibility of properties and methods in a class.
-
-        // public decimal Total { get; set; }
+        // Accessors can be public, private, protected, or internal.
         private decimal _localTotal; // This is a private field, not a property.
                                      // field is a keyword in C# that is used to declare a variable that is part of a class or struct.
                                      // a field is different from a property in that it does not have accessors (get; and set;).
@@ -32,11 +31,25 @@ namespace ConsoleApp.Models
             // when a new instance of Sale is created.
         }
 
+        public Sale () { }
+        // This is a default parameterless constructor for the Sale class.
+        // It allows creating an instance of Sale without passing any parameters.
+        // allows for creating an instance of Sale without initializing the Total property.
+        // and use the object initializer syntax to set the Total property later.
+
+        // having both a constructor with parameters and a default constructor allows for
+        // flexibility in how instances of the Sale class can be created.
+        // downside is that if you have a constructor with parameters, the default constructor
+        // will not be created automatically.
+        // so if you want to have a default constructor, you must define it explicitly.
+        // having both constructors is named *constructor overloading*.
+
         // Accessors can be used with methods as well.
         // After the accessor, we add the type of the value that the method returns.
         // This is a method that returns a string with information about the sale.
         public string GetInfo()
         {
+            _localTotal = Total;
             return "_localTotalocalTotal: " + _localTotal + ", _otherTotal: " + _otherTotal + ", Total: " + Total;
         }
 
